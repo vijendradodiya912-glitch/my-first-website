@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vijendra IT Support</title>
+<style>
+
+*{box-sizing:border-box}
+
+body{margin:0;font-family:Arial,sans-serif;background:#0b1220;color:white;line-height:1.6}
+
+header{padding:20px 7%;display:flex;justify-content:space-between;align-items:center;background:#121d30;flex-wrap:wrap}
+
+.logo{font-size:22px;font-weight:bold;color:#69e3b0}
+
+nav a{color:white;text-decoration:none;margin:0 8px}
+
+.hero{text-align:center;padding:85px 20px;background:linear-gradient(135deg,#132b40,#0b1220)}
+
+h1{font-size:clamp(32px,6vw,55px);margin:10px}
+
+h1 span{color:#69e3b0}
+
+p{color:#bac7d9}
+
+.btn{display:inline-block;background:#69e3b0;color:#07170f;padding:12px 20px;border:0;border-radius:8px;text-decoration:none;font-weight:bold;cursor:pointer}
+
+section{padding:50px 7%}
+
+h2{text-align:center;font-size:30px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+
+.card{background:#121d30;border:1px solid #29374d;padding:22px;border-radius:13px}
+
+.card h3{color:#69e3b0}
+
+.price{font-size:28px;font-weight:bold}
+
+form{max-width:600px;margin:auto;background:#121d30;padding:24px;border-radius:14px}
+
+label{display:block;margin-top:15px}
+
+input,select,textarea{width:100%;padding:12px;margin-top:6px;background:#0b1220;border:1px solid #35465e;border-radius:7px;color:white}
+
+textarea{min-height:100px}
+
+form button{width:100%;margin-top:20px}
+
+.note{font-size:13px}
+
+footer{text-align:center;padding:25px;background:#121d30;color:#bac7d9}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">Vijendra IT Support</div>
+<nav>
+<a href="#services">Services</a>
+<a href="#pricing">Pricing</a>
+<a href="#booking">Book Now</a>
+</nav>
+</header>
+<div class="hero">
+<p>YOUR REMOTE IT SUPPORT PARTNER</p>
+<h1>Computer Problem?<br><span>Let's Fix It Online.</span></h1>
+<p>Windows, Outlook, printer and software troubleshooting from home.</p>
+<a class="btn" href="#booking">Book Remote Support</a>
+</div>
+<section id="services">
+<h2>Our Services</h2>
+<div class="grid">
+<div class="card"><h3>💻 Windows Support</h3><p>Windows errors, slow PC and update troubleshooting.</p></div>
+<div class="card"><h3>✉️ Outlook Support</h3><p>Email setup, Outlook profile and common errors.</p></div>
+<div class="card"><h3>🖨️ Printer Support</h3><p>Printer setup and printing connectivity issues.</p></div>
+<div class="card"><h3>⚙️ Software Installation</h3><p>Help with supported software and installation issues.</p></div>
+<div class="card"><h3>🌐 Network Support</h3><p>Basic Wi-Fi and internet troubleshooting.</p></div>
+<div class="card"><h3>🧰 General PC Help</h3><p>Common computer issues and basic diagnostics.</p></div>
+</div>
+</section>
+<section id="pricing">
+<h2>Service Pricing</h2>
+<div class="grid">
+<div class="card"><h3>Basic</h3><div class="price">₹199</div><p>Up to 20 minutes</p></div>
+<div class="card"><h3>Standard</h3><div class="price">₹399</div><p>Up to 45 minutes</p></div>
+<div class="card"><h3>Extended</h3><div class="price">₹699</div><p>Up to 60 minutes</p></div>
+</div>
+<p class="note">Example prices only. Confirm final charges and scope before support begins.</p>
+</section>
+<section id="booking">
+<h2>Book Remote Support</h2>
+<form id="bookingForm">
+<label>Your Name *</label>
+<input id="name" required maxlength="80" placeholder="Enter your name">
+<label>Phone Number *</label>
+<input id="phone" type="tel" required maxlength="20" placeholder="Your contact number">
+<label>Choose Service *</label>
+<select id="service" required>
+<option value="">Select a service</option>
+<option>Windows Support</option>
+<option>Outlook Support</option>
+<option>Printer Support</option>
+<option>Software Installation</option>
+<option>Network Support</option>
+<option>General PC Help</option>
+</select>
+<label>Describe Your Problem *</label>
+<textarea id="problem" required maxlength="1000" placeholder="Describe the issue. Do not include passwords or confidential information."></textarea>
+<label>Preferred Date *</label>
+<input id="date" type="date" required>
+<label>Preferred Time *</label>
+<select id="time" required>
+<option value="">Select time</option>
+<option>10 AM - 12 PM</option>
+<option>12 PM - 2 PM</option>
+<option>2 PM - 4 PM</option>
+<option>4 PM - 6 PM</option>
+<option>6 PM - 8 PM</option>
+</select>
+<label>Payment Method *</label>
+<select id="payment" required>
+<option value="">Select payment method</option>
+<option>UPI</option>
+<option>After Support</option>
+</select>
+<button class="btn" type="submit">Send Booking Request on WhatsApp</button>
+<p id="status" class="note" role="status"></p>
+<p class="note">This sends a request only. Your booking is not confirmed until Vijendra replies. Payment is not processed by this form.</p>
+</form>
+</section>
+<footer>
+<p>© 2026 Vijendra IT Support | Remote Support Only</p>
+<p>Never share your password, OTP or banking PIN with anyone.</p>
+</footer>
+<script>
+// Replace with your own WhatsApp number: country code + number.
+// Example format: 919876543210 (digits only).
+
+const WHATSAPP_NUMBER = "919770155356";
+
+document.getElementById("bookingForm").addEventListener("submit", function(e){
+
+  e.preventDefault();
+
+  if (!/^91[6-9]\d{9}$/.test(WHATSAPP_NUMBER)) {
+
+    document.getElementById("status").textContent =
+
+      "Website setup pending: add your real WhatsApp number in the code first.";
+
+    return;
+
+  }
+
+  const name = document.getElementById("name").value.trim();
+
+  const phone = document.getElementById("phone").value.trim();
+
+  const service = document.getElementById("service").value;
+
+  const problem = document.getElementById("problem").value.trim();
+
+  const date = document.getElementById("date").value;
+
+  const time = document.getElementById("time").value;
+
+  const payment = document.getElementById("payment").value;
+
+  const message =
+
+    "Hello Vijendra, I would like to request remote IT support.\n\n" +
+
+    "Name: " + name + "\n" +
+
+    "Contact: " + phone + "\n" +
+
+    "Service: " + service + "\n" +
+
+    "Problem: " + problem + "\n" +
+
+    "Preferred date: " + date + "\n" +
+
+    "Preferred time: " + time + "\n" +
+
+    "Payment preference: " + payment + "\n\n" +
+
+    "Please confirm availability and charges before starting.";
+
+  document.getElementById("status").textContent =
+
+    "Review the message in WhatsApp and press Send. This is not a confirmed booking.";
+
+  window.open(
+
+    "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message),
+
+    "_blank"
+
+  );
+
+});
+
+const today = new Date();
+
+document.getElementById("date").min =
+
+  today.getFullYear() + "-" +
+
+  String(today.getMonth()+1).padStart(2,"0") + "-" +
+
+  String(today.getDate()).padStart(2,"0");
+</script>
+</body>
+</html>
+Open WhatsApp
+WhatsApp Messenger: More than 2 billion people
+          in over 180 countries use WhatsApp to stay in touch with friends and
+          family, anytime and anywhere. WhatsApp is free and offers sim...
+ 
